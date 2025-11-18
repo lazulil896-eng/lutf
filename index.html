@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>CryptoWave - Berita Trading & Investasi</title>
+    <title>Investing - Berita Trading & Investasi</title>
     <style>
       /* CSS untuk styling dan 3D effects */
       body {
@@ -103,10 +103,56 @@
         text-decoration: none;
         font-weight: bold;
         transition: transform 0.3s;
+        cursor: pointer;
       }
 
       .read-more:hover {
         transform: scale(1.05) rotateY(5deg); /* 3D hover pada link */
+      }
+
+      /* Modal untuk detail berita */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.8);
+        perspective: 1000px;
+      }
+
+      .modal-content {
+        background-color: #1e1e1e;
+        margin: 10% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+        max-width: 800px;
+        border-radius: 8px;
+        transform-style: preserve-3d;
+        transform: rotateX(5deg) translateZ(20px);
+      }
+
+      .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      .close:hover {
+        color: #00d4aa;
+      }
+
+      .modal img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 1rem;
+        border-radius: 8px;
       }
 
       footer {
@@ -143,7 +189,7 @@
   </head>
   <body>
     <header>
-      <div class="logo">CryptoWave</div>
+      <div class="logo">Investing</div>
       <nav>
         <ul>
           <li><a href="#">Beranda</a></li>
@@ -158,7 +204,7 @@
 
     <main>
       <section class="hero">
-        <h1>Selamat Datang di CryptoWave</h1>
+        <h1>Selamat Datang di Investing</h1>
         <p>
           Berita terkini tentang trading dan investasi cryptocurrency. Tetap
           update dengan tren pasar!
@@ -169,8 +215,8 @@
         <h2>Berita Terbaru</h2>
         <div class="news-item">
           <img
-            src="https://via.placeholder.com/300x200?text=Crypto+News"
-            alt="Berita Crypto"
+            src="https://images.unsplash.com/photo-1605792657660-596af9009e82?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+            alt="Bitcoin Coin"
           />
           <div>
             <h3>Bitcoin Naik 10% Setelah Pengumuman Fed</h3>
@@ -178,13 +224,15 @@
               Harga Bitcoin melonjak setelah Federal Reserve mengumumkan
               kebijakan moneter baru. Pelajari strategi trading di sini.
             </p>
-            <a href="#" class="read-more">Baca Selengkapnya</a>
+            <a href="#" class="read-more" onclick="openModal(1)"
+              >Baca Selengkapnya</a
+            >
           </div>
         </div>
         <div class="news-item">
           <img
-            src="https://via.placeholder.com/300x200?text=Trading+Tips"
-            alt="Tips Trading"
+            src="https://images.unsplash.com/photo-1639762681485-074b7f938ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+            alt="Ethereum Coin"
           />
           <div>
             <h3>Tips Investasi Ethereum untuk Pemula</h3>
@@ -192,13 +240,15 @@
               Panduan lengkap untuk memulai investasi di Ethereum, termasuk
               analisis risiko dan potensi keuntungan.
             </p>
-            <a href="#" class="read-more">Baca Selengkapnya</a>
+            <a href="#" class="read-more" onclick="openModal(2)"
+              >Baca Selengkapnya</a
+            >
           </div>
         </div>
         <div class="news-item">
           <img
-            src="https://via.placeholder.com/300x200?text=Market+Update"
-            alt="Update Pasar"
+            src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&h=200&q=80"
+            alt="Trading Chart"
           />
           <div>
             <h3>Pasar Crypto Volatile: Apa yang Harus Dilakukan?</h3>
@@ -206,15 +256,27 @@
               Analisis volatilitas pasar crypto dan saran untuk trader
               berpengalaman menghadapi fluktuasi harga.
             </p>
-            <a href="#" class="read-more">Baca Selengkapnya</a>
+            <a href="#" class="read-more" onclick="openModal(3)"
+              >Baca Selengkapnya</a
+            >
           </div>
         </div>
       </section>
     </main>
 
+    <!-- Modal untuk detail berita -->
+    <div id="newsModal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div id="modalContent">
+          <!-- Konten modal akan diisi oleh JavaScript -->
+        </div>
+      </div>
+    </div>
+
     <footer>
       <p>
-        &copy; 2023 CryptoWave. Semua hak dilindungi. | Disclaimer: Ini bukan
+        &copy; 2023 Investing. Semua hak dilindungi. | Disclaimer: Ini bukan
         nasihat keuangan.
       </p>
     </footer>
@@ -228,9 +290,62 @@
           nav.classList.toggle("active");
         });
 
+      // Fungsi untuk membuka modal dengan detail berita
+      function openModal(newsId) {
+        const modal = document.getElementById("newsModal");
+        const content = document.getElementById("modalContent");
+
+        // Data berita dummy (bisa diganti dengan data real dari API)
+        const newsData = {
+          1: {
+            title: "Bitcoin Naik 10% Setelah Pengumuman Fed",
+            image:
+              "https://images.unsplash.com/photo-1605792657660-596af9009e82?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80",
+            fullText:
+              "Harga Bitcoin melonjak sebesar 10% dalam 24 jam terakhir setelah Federal Reserve mengumumkan kebijakan moneter baru yang mendukung pasar crypto. Para analis memperkirakan bahwa ini adalah awal dari tren bullish jangka panjang. Strategi trading yang direkomendasikan termasuk diversifikasi portofolio dan penggunaan stop-loss untuk mengurangi risiko. Jangan lupa untuk selalu memantau volatilitas pasar dan konsultasikan dengan ahli keuangan sebelum berinvestasi.",
+          },
+          2: {
+            title: "Tips Investasi Ethereum untuk Pemula",
+            image:
+              "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80",
+            fullText:
+              "Ethereum adalah salah satu cryptocurrency terbesar setelah Bitcoin. Untuk pemula, mulailah dengan membeli Ethereum melalui platform terpercaya seperti Binance atau Coinbase. Analisis risiko meliputi volatilitas harga yang tinggi, namun potensi keuntungan dari upgrade jaringan seperti Ethereum 2.0 sangat menjanjikan. Tips: Investasikan hanya uang yang bisa Anda rugikan, dan pelajari tentang smart contracts sebelum terjun lebih dalam.",
+          },
+          3: {
+            title: "Pasar Crypto Volatile: Apa yang Harus Dilakukan?",
+            image:
+              "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=400&q=80",
+            fullText:
+              "Pasar cryptocurrency dikenal dengan volatilitasnya yang tinggi, yang bisa memberikan peluang besar tetapi juga risiko. Saat pasar volatile, trader berpengalaman disarankan untuk menggunakan analisis teknikal, seperti melihat moving averages dan RSI. Jangan panik sell saat harga turun; sebaliknya, gunakan momentum untuk entry yang tepat. Selalu diversifikasi investasi Anda untuk mengurangi risiko.",
+          },
+        };
+
+        const news = newsData[newsId];
+        content.innerHTML = `
+                <h2>${news.title}</h2>
+                <img src="${news.image}" alt="${news.title}">
+                <p>${news.fullText}</p>
+            `;
+
+        modal.style.display = "block";
+      }
+
+      // Fungsi untuk menutup modal
+      function closeModal() {
+        document.getElementById("newsModal").style.display = "none";
+      }
+
+      // Tutup modal jika klik di luar
+      window.onclick = function (event) {
+        const modal = document.getElementById("newsModal");
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+
       // Simulasi loading berita
       window.addEventListener("load", function () {
-        console.log("CryptoWave loaded successfully!");
+        console.log("Investing loaded successfully!");
       });
     </script>
   </body>
