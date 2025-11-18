@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CryptoWave - Berita Trading & Investasi</title>
+    <style>
+      /* CSS untuk styling dan 3D effects */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
+        color: #ffffff;
+        perspective: 1000px; /* Untuk efek 3D global */
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        background-color: rgba(30, 30, 30, 0.9);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        transform-style: preserve-3d;
+        transform: rotateX(5deg); /* Efek 3D pada header */
+      }
+
+      .logo {
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #00d4aa;
+        transform: translateZ(20px); /* 3D depth */
+      }
+
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 1rem;
+      }
+
+      nav a {
+        color: #ffffff;
+        text-decoration: none;
+        transition: transform 0.3s;
+      }
+
+      nav a:hover {
+        transform: scale(1.1) rotateY(10deg); /* 3D hover effect */
+      }
+
+      .menu-toggle {
+        display: none;
+        font-size: 1.5rem;
+        cursor: pointer;
+      }
+
+      .hero {
+        text-align: center;
+        padding: 3rem;
+        background: linear-gradient(135deg, #00d4aa, #007bff);
+        color: #ffffff;
+        transform: rotateX(-5deg); /* Efek 3D miring */
+        transform-style: preserve-3d;
+      }
+
+      .hero h1 {
+        transform: translateZ(30px); /* Depth pada teks */
+      }
+
+      .news-list {
+        padding: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .news-item {
+        display: flex;
+        margin-bottom: 2rem;
+        background-color: rgba(30, 30, 30, 0.9);
+        padding: 1rem;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        transform-style: preserve-3d;
+        transition: transform 0.5s;
+      }
+
+      .news-item:hover {
+        transform: rotateY(10deg) rotateX(5deg) translateZ(20px); /* 3D hover pada kartu berita */
+      }
+
+      .news-item img {
+        width: 300px;
+        height: 200px;
+        object-fit: cover;
+        margin-right: 1rem;
+        border-radius: 8px;
+        transform: translateZ(10px); /* Depth pada gambar */
+      }
+
+      .read-more {
+        color: #00d4aa;
+        text-decoration: none;
+        font-weight: bold;
+        transition: transform 0.3s;
+      }
+
+      .read-more:hover {
+        transform: scale(1.05) rotateY(5deg); /* 3D hover pada link */
+      }
+
+      footer {
+        text-align: center;
+        padding: 1rem;
+        background-color: rgba(30, 30, 30, 0.9);
+        color: #888;
+        transform: rotateX(5deg); /* Efek 3D pada footer */
+      }
+
+      @media (max-width: 768px) {
+        nav ul {
+          display: none;
+          flex-direction: column;
+          position: absolute;
+          top: 60px;
+          right: 0;
+          background-color: rgba(30, 30, 30, 0.9);
+          width: 200px;
+          padding: 1rem;
+          transform: translateZ(10px);
+        }
+        nav ul.active {
+          display: flex;
+        }
+        .menu-toggle {
+          display: block;
+        }
+        .news-item {
+          flex-direction: column;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="logo">CryptoWave</div>
+      <nav>
+        <ul>
+          <li><a href="#">Beranda</a></li>
+          <li><a href="#">Berita Crypto</a></li>
+          <li><a href="#">Trading Tips</a></li>
+          <li><a href="#">Investasi</a></li>
+          <li><a href="#">Kontak</a></li>
+        </ul>
+        <div class="menu-toggle" id="menu-toggle">☰</div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <h1>Selamat Datang di CryptoWave</h1>
+        <p>
+          Berita terkini tentang trading dan investasi cryptocurrency. Tetap
+          update dengan tren pasar!
+        </p>
+      </section>
+
+      <section class="news-list">
+        <h2>Berita Terbaru</h2>
+        <div class="news-item">
+          <img
+            src="https://via.placeholder.com/300x200?text=Crypto+News"
+            alt="Berita Crypto"
+          />
+          <div>
+            <h3>Bitcoin Naik 10% Setelah Pengumuman Fed</h3>
+            <p>
+              Harga Bitcoin melonjak setelah Federal Reserve mengumumkan
+              kebijakan moneter baru. Pelajari strategi trading di sini.
+            </p>
+            <a href="#" class="read-more">Baca Selengkapnya</a>
+          </div>
+        </div>
+        <div class="news-item">
+          <img
+            src="https://via.placeholder.com/300x200?text=Trading+Tips"
+            alt="Tips Trading"
+          />
+          <div>
+            <h3>Tips Investasi Ethereum untuk Pemula</h3>
+            <p>
+              Panduan lengkap untuk memulai investasi di Ethereum, termasuk
+              analisis risiko dan potensi keuntungan.
+            </p>
+            <a href="#" class="read-more">Baca Selengkapnya</a>
+          </div>
+        </div>
+        <div class="news-item">
+          <img
+            src="https://via.placeholder.com/300x200?text=Market+Update"
+            alt="Update Pasar"
+          />
+          <div>
+            <h3>Pasar Crypto Volatile: Apa yang Harus Dilakukan?</h3>
+            <p>
+              Analisis volatilitas pasar crypto dan saran untuk trader
+              berpengalaman menghadapi fluktuasi harga.
+            </p>
+            <a href="#" class="read-more">Baca Selengkapnya</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        &copy; 2023 CryptoWave. Semua hak dilindungi. | Disclaimer: Ini bukan
+        nasihat keuangan.
+      </p>
+    </footer>
+
+    <script>
+      // JavaScript untuk toggle menu mobile
+      document
+        .getElementById("menu-toggle")
+        .addEventListener("click", function () {
+          const nav = document.querySelector("nav ul");
+          nav.classList.toggle("active");
+        });
+
+      // Simulasi loading berita
+      window.addEventListener("load", function () {
+        console.log("CryptoWave loaded successfully!");
+      });
+    </script>
+  </body>
+</html>
